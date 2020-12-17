@@ -43,11 +43,17 @@
                         }
                     }
                 }],
-                "name": "testroute",
-                "addressPrefix": "0.0.0.0/0",
-                "nextHopType": "VirtualAppliance",
-                "nextHopIpAddress": "192.168.10.6",
                 "disableBgpRoutePropagation": true
+            }
+        },
+        {
+            "name": "routeTable1/default",
+            "type": "Microsoft.Network/routeTables/routes",
+            "apiVersion": "2019-11-01",
+            "properties": {
+                "addressPrefix": "0.0.0.0",
+                "nextHopType": "VirtualAppliance",
+                "nextHopIpAddress": "192.168.10.6"
             }
         }
     ],
