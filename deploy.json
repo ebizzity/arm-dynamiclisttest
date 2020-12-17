@@ -7,8 +7,9 @@
         "defaultValue": {
             "vnet": {
             "subnets": [
-            { "name": "subnet1", "addressPrefix": "10.99.0.0/24" },
-            { "name": "subnet2", "addressPrefix": "10.99.1.0/24" }
+            { "name": "spoke1", "addressPrefix": "10.99.0.0/24" },
+            { "name": "spoke2", "addressPrefix": "10.99.1.0/24" },
+            { "name": "spoke3", "addressPrefix": "10.99.2.0/24" }
             ]
         },
         "metadata": {
@@ -42,6 +43,10 @@
                         }
                     }
                 }],
+                "name": "testroute",
+                "addressPrefix": "0.0.0.0/0",
+                "nextHopType": "VirtualAppliance",
+                "nextHopIpAddress": "192.168.10.6",
                 "disableBgpRoutePropagation": true
             }
         }
