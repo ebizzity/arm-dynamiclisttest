@@ -28,9 +28,9 @@
             "tags": {
             },
             "properties": {
-          /*       "routes": [
+                "routes": [
                     
-                ], */
+                 
                 "copy": [{
                     "name": "routes",
                     "count": "[length(parameters('spokes').vnet.subnets)]",
@@ -43,7 +43,8 @@
 
                         }
                     }
-                }],
+                }]
+                ],
                 "disableBgpRoutePropagation": true
             }
         }
