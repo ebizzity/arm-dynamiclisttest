@@ -28,7 +28,6 @@
             "tags": {
             },
             "properties": {
-                "routes": [
                     
                  
                 "copy": [{
@@ -36,15 +35,12 @@
                     "count": "[length(parameters('spokes').vnet.subnets)]",
                     "input": {
                         "name": "[parameters('spokes').vnet[copyIndex('routes')].name]",
-                        "properties": {
                             "addressPrefix": "[parameters('spokes').vnet.subnets[copyIndex('routes')].addressPrefix]",
                             "nextHopType": "VirtualAppliance",
                             "nextHopIpAddress": "192.168.10.6"
 
-                        }
                     }
-                }]
-                ],
+                }],
                 "disableBgpRoutePropagation": true
             }
         }
