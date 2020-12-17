@@ -35,9 +35,9 @@
                     "name": "routes",
                     "count": "[length(parameters('spokes').vnet.subnets)]",
                     "input": {
-                        "name": "[parameters('spokes').vnet[copyIndex('subnets')].name]",
+                        "name": "[parameters('spokes').vnet[copyIndex('routes')].name]",
                         "properties": {
-                            "addressPrefix": "[parameters('spokes').vnet.subnets[copyIndex('subnets')].addressPrefix]",
+                            "addressPrefix": "[parameters('spokes').vnet.subnets[copyIndex('routes')].addressPrefix]",
                             "nextHopType": "VirtualAppliance",
                             "nextHopIpAddress": "192.168.10.6"
 
