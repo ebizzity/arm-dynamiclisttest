@@ -47,7 +47,7 @@
             }
         },
         {
-            "name": "routeTable1",
+            "name": "routeTable1/Default",
             "type": "Microsoft.Network/routeTables/routes",
             "apiVersion": "2019-11-01",
             "properties": {
