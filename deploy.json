@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "spokes": {
+        "type": "object",
+        "defaultValue": {
+            "vnet": {
+            "subnets": [
+            { "name": "subnet1", "addressPrefix": "10.99.0.0/24" },
+            { "name": "subnet2", "addressPrefix": "10.99.1.0/24" }
+            ]
+        },
+        "metadata": {
+            "description": "Spoke Ranges for TRANS RTs"
+        }
+        }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "routeTable1",
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-11-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+            },
+            "properties": {
+          /*       "routes": [
+                    
+                ], */
+                "copy": [{
+                    "name": "routes",
+                    "count": "[length(parameters('spokes').vnet.subnets)]",
+                    "input": {
+                        "name": "[parameters('spokes').vnet[copyIndex('subnets')].name]",
+                        "properties": {
+                            "addressPrefix": "[parameters('spokes').vnet.subnets[copyIndex('subnets')].addressPrefix]",
+                            "nextHopType": "VirtualAppliance",
+                            "nextHopIpAddress": "192.168.10.6"
+
+                        }
+                    }
+                }],
+                "disableBgpRoutePropagation": true
+            }
+        }
+    ],
+    "outputs": {}
+}
